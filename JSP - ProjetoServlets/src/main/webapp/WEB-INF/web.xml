@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!-- Configuração da Servlet para listar clientes -->
+  <servlet>
+    <servlet-name>ListarClientesServlet</servlet-name>
+    <servlet-class>ListarClientesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarClientesServlet</servlet-name>
+    <url-pattern>/listar</url-pattern>
+  </servlet-mapping>
+
+  <!-- Configuração da Servlet para cadastrar cliente -->
+  <servlet>
+    <servlet-name>AddClienteServlet</servlet-name>
+    <servlet-class>AddClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddClienteServlet</servlet-name>
+    <url-pattern>/cadastrar</url-pattern>
+  </servlet-mapping>
+
+  <!-- Configuração da Servlet para detalhes do cliente -->
+  <servlet>
+    <servlet-name>DetalharClienteServlet</servlet-name>
+    <servlet-class>DetalharClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetalharClienteServlet</servlet-name>
+    <url-pattern>/detalhes</url-pattern>
+  </servlet-mapping>
+
+</web-app>
+
