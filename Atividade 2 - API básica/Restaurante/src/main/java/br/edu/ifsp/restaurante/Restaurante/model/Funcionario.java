@@ -1,60 +1,44 @@
 package br.edu.ifsp.restaurante.Restaurante.model;
 
 import br.edu.ifsp.restaurante.Restaurante.dto.FuncionarioRequestDTO;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "funcionarios")
+@Entity(name = "funcionarios")
 public class Funcionario {
 
-    private static Integer idBase = 0;
-
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String nome;
+    @Column
     private String cpf;
+    @Column
     private String funcao;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
-
-    public Funcionario(Integer id, String nome, String cpf, String funcao) {
-        this.id = id;
+    public Funcionario(String nome, String cpf, String funcao, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.funcao = funcao;
+        this.endereco = endereco;
     }
 
     public Funcionario(FuncionarioRequestDTO f){
         this.nome = f.nome();
         this.cpf = f.cpf();
         this.funcao = f.funcao();
-        this.id = idBase++;
-    }
-
-    public Funcionario(){}
-
-
-    public Integer getId() {
-        return id;
+        this.endereco = f.endereco();
     }
 
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
 }

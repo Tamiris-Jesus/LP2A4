@@ -1,57 +1,63 @@
 package br.edu.ifsp.restaurante.Restaurante.controller;
 
+import br.edu.ifsp.restaurante.Restaurante.dto.ClienteRequestDTO;
+import br.edu.ifsp.restaurante.Restaurante.dto.ClienteResponseDTO;
 import br.edu.ifsp.restaurante.Restaurante.dto.FuncionarioRequestDTO;
 import br.edu.ifsp.restaurante.Restaurante.dto.FuncionarioResponseDTO;
+import br.edu.ifsp.restaurante.Restaurante.model.Cliente;
 import br.edu.ifsp.restaurante.Restaurante.model.Funcionario;
+import br.edu.ifsp.restaurante.Restaurante.repository.FuncionarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("funcionario")
-
 public class FuncionarioController {
+    @Autowired
+    private FuncionarioRepository repository;
 
-    List<Funcionario> funcionarios = new ArrayList<>();
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping
+    public List<FuncionarioResponseDTO> listarTodosFuncionarios(){
+        return repository.findAll()
+                .stream()
+                .map(FuncionarioResponseDTO::new)
+                .toList();
+    }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/{id}")
+    public FuncionarioResponseDTO listarFuncionario(@PathVariable Long id) {
+        Optional<Funcionario> funcionarioOptional = repository.findById(id);
+        if (funcionarioOptional.isPresent()) {
+            Funcionario funcionario = funcionarioOptional.get();
+            FuncionarioResponseDTO funcionarioResponseDTO = new FuncionarioResponseDTO(funcionario);
+            return funcionarioResponseDTO;
+        } else {
+            return null;
+        }
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public void addFuncionario(@RequestBody FuncionarioRequestDTO data){
-        funcionarios.add(new Funcionario(data));
-
+        repository.save(new Funcionario(data));
     }
 
-    @GetMapping
-    public List<FuncionarioResponseDTO> getAll(){
-        return funcionarios.stream().map(FuncionarioResponseDTO::new).toList();
-    }
-
-    @GetMapping("/{id}")
-    public Funcionario findFuncById(@PathVariable Integer id){
-        for(Funcionario f : funcionarios){
-            if(f.getId() == id){
-                return f;
-            }
-        } return null;
+    @PutMapping("/{id}")
+    public void editarFuncionario(@PathVariable Long id, @RequestBody FuncionarioRequestDTO data){
+        Funcionario funcionario = new Funcionario(data);
+        funcionario.setId(id);
+        repository.save(funcionario);
     }
 
     @DeleteMapping("/{id}")
-    public void removeFuncionario(@PathVariable Integer id){
-        for(Funcionario f : funcionarios){
-            if(f.getId() == id){
-                funcionarios.remove(f);
-            }
-        }
+    public void excluirFuncionario(@PathVariable Long id){
+        repository.deleteById(id);
     }
 
-    @PutMapping
-    public void alteraFuncionario(@RequestBody FuncionarioResponseDTO funcionarioResponseDTO){
-        Funcionario funcionario = findFuncById(funcionarioResponseDTO.id());
-        if(funcionario == null){
-            System.out.println("Funcionario nao encontrado");
-        } else {
-            funcionario.setCpf(funcionarioResponseDTO.cpf());
-            funcionario.setNome(funcionarioResponseDTO.nome());
-            funcionario.setFuncao(funcionarioResponseDTO.funcao());
-        }
-    }
+
 }
