@@ -1,6 +1,10 @@
 package Model;
 
-public class Pessoa {
+import java.io.Serializable;
+
+// Para que um objeto possa ser serializado e enviado através de um ObjectOutputStream,
+// ele deve implementar a interface Serializable.
+public class Pessoa implements Serializable {
     private String nome;
     private int idade;
 

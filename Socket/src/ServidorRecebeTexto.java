@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class ServidorRecebeTexto {
     public static void main(String[] args) throws IOException {
         // Definir o server Socket (abrir porta de conexão)
         ServerSocket serverSocket = new ServerSocket(54321);

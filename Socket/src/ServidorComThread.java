@@ -17,8 +17,11 @@ public class ServidorComThread {
             System.out.println("Cliente " + socket.getInetAddress().getHostAddress() + " conectado");
 
             //Definir uma thread para cada cliente conectado
+            // A lógica do processamento da requisição fica sob a responsabilidade da Thread, o servidor
+            // apenas controla a conexão do cliente
+
             ThreadSockets thread = new ThreadSockets(socket);
-            thread.start();
+            thread.start(); // chama o método 'run' da classe de  Thread
 
         }
     }

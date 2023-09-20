@@ -9,6 +9,7 @@ public class ThreadSockets extends Thread {
         this.socket = s;
     }
 
+
     @Override
     public void run(){
         System.out.println(Thread.currentThread().getName()); // imprimir nome da Thread

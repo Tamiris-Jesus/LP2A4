@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Cliente2 extends Thread{
-
+public class Cliente2{
     public static void main(String[] args) throws IOException {
         // Abrir conexão
         Socket socket = new Socket("localhost", 54321);
