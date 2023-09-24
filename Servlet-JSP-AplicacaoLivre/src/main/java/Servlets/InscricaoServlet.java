@@ -1,5 +1,6 @@
 package Servlets;
 
+import Repositoy.AtividadeRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ public class InscricaoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
         // Obtenha o ID da atividade da solicitação
         String atividadeId = request.getParameter("atividadeId");
+        AtividadeRepository atividadeRepository = new AtividadeRepository();
 
         if (atividadeId != null) {
             try {
@@ -20,6 +22,9 @@ public class InscricaoServlet extends HttpServlet {
                 Long id = Long.parseLong(atividadeId);
 
                 // Realize a inscrição do usuário na atividade (implemente sua lógica de inscrição aqui)
+
+
+                //atividadeRepository.inscreverParticipante(id, participante);
 
                 // Redirecione o usuário de volta para a página de listagem de atividades
                 response.sendRedirect(request.getContextPath() + "/listarAtividades");

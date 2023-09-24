@@ -15,7 +15,7 @@
             <th>Descrição</th>
             <th>Data</th>
             <th>Hora</th>
-            <th>Ação</th> <!-- Nova coluna para o botão de inscrição -->
+            <th>Inscrição</th> <!-- Nova coluna para o botão de inscrição -->
         </tr>
         <c:forEach var="atividade" items="${atividades}">
             <tr>
@@ -23,7 +23,7 @@
                 <td>${atividade.dia}</td>
                 <td>${atividade.hora}</td>
                 <td>
-                    <a href="<%= request.getContextPath() %>/inscrever?atividadeId=${atividade.id}">Inscrever-se</a>
+                    <a href="inscrever?atividadeId=${atividade.id}">Inscrever-se</a>
                 </td>
             </tr>
         </c:forEach>
