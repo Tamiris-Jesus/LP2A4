@@ -1,0 +1,43 @@
+/* Estilização da tabela */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilização do cabeçalho */
+h1 {
+    text-align: center;
+}
+
+/* Estilização do link para cadastrar nova atividade */
+a {
+    display: block;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
