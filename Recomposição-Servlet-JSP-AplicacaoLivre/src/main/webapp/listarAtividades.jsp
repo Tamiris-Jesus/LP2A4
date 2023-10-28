@@ -29,6 +29,5 @@
         </c:forEach>
     </table>
     <br>
-    <a href="cadastroAtividade.jsp">Cadastrar Nova Atividade</a>
 </body>
 </html>

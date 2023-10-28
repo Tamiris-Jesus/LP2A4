@@ -22,17 +22,13 @@ public class LoginServlet extends HttpServlet {
         UsuarioRepository usuarioRepository = new UsuarioRepository();
         List<Usuario> organizadores = usuarioRepository.listarOrganizadores();
 
-        // Verifique o email e a senha do organizador (você precisa implementar essa lógica)
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
-
         for (Usuario organizador : organizadores) {
             if (organizador.getEmail().equals(email) && organizador.getSenha().equals(senha) && organizador.isOrganizador()) {
-                // Organizador autenticado, armazene-o na sessão
                 HttpSession session = request.getSession();
                 session.setAttribute("organizador", organizador);
-                // Redirecione para a página de cadastro de atividades
                 response.sendRedirect("cadastroAtividade.jsp");
                 return;
             }

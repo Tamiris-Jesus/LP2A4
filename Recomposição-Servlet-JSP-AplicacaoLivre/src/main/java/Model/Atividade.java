@@ -1,7 +1,5 @@
 package Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -14,7 +12,6 @@ import java.util.List;
 
 //@Getter
 @Setter
-
 @Entity(name = "atividade")
 @Table(name = "atividade")
 public class Atividade {
