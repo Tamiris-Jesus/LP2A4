@@ -18,10 +18,8 @@ public class ListarAtividadesServlet extends HttpServlet {
         AtividadeRepository atividadeRepository = new AtividadeRepository();
         List<Atividade> atividades = atividadeRepository.listarAtividades();
 
-        // Defina a lista de atividades como um atributo de solicitação
         request.setAttribute("atividades", atividades);
 
-        // Encaminhe para a página JSP de listagem de atividades
         request.getRequestDispatcher("listarAtividades.jsp").forward(request, response);
     }
 }

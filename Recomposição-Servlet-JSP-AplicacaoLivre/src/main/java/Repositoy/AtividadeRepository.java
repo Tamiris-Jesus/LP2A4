@@ -33,7 +33,12 @@ public class AtividadeRepository {
 
     public void inscreverParticipante(Long id, Usuario usuario){
         Atividade atividade = buscarAtividade(id);
-        atividade.adicionaParticipante(usuario);
+        if (atividade != null) {
+            atividade.adicionaParticipante(usuario);
+        } else {
+            throw  new RuntimeException("Id da atividade nao foi encontrado");
+        }
     }
+
 
 }

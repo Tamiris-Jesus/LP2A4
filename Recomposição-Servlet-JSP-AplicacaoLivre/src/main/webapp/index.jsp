@@ -14,7 +14,7 @@
     <h2>Bem-vindo ao evento de Palestras de Tecnologia</h2>
     <div class="btn-container">
         <a href="listarAtividades" class="btn">Visualizar Atividades disponíveis</a>
-        <a href="login.jsp" class="btn">Fazer Login como Organizador</a>
+        <a href="login.jsp" class="btn">Cadastrar atividade</a>
     </div>
 </body>
 </html>
